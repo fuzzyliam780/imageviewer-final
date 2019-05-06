@@ -1,9 +1,9 @@
 import java.awt.Color;
 /**
- * Write a description of class ColoredCorners here.
+ * Creates the worhol effect.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Liam Marquis
+ * @version 4/29/19
  */
 public class ColoredCorners extends Filter
 {
@@ -25,23 +25,49 @@ public class ColoredCorners extends Filter
      */
     public void apply(OFImage image)
     {
+        OFImage currentImage = new OFImage(image);
+        if(currentImage != null) {
+            // create new image with double size
+            int width = currentImage.getWidth() / 2;
+            int height = currentImage.getHeight() / 2;
+            OFImage newImage = new OFImage(width, height);
+
+            // copy pixel data into new image
+            for(int y = 0; y < height; y++) {
+                for(int x = 0; x < width; x++) {
+                    newImage.setPixel(x, y, currentImage.getPixel(x * 2, y * 2));
+                }
+            }
+            
+            currentImage = newImage;
+        }
         
+        /*  
         OFImage normalImage = new OFImage(image);
         int height = image.getHeight();
         int width = image.getWidth();
-        int heightx2 = normalImage.getHeight()*2;
-        int widthx2 = normalImage.getWidth()*2;
+        int half_height = normalImage.getHeight()/2;
+        int half_width = normalImage.getWidth()/2;
         
-        OFImage newImage = new OFImage(widthx2,heightx2);
+        OFImage newImage = new OFImage(half_width,half_height);
+        
+        
         
         for(int y = 0; y < height; y++) {
             for(int x = 0; x < width; x++) {
+                if (x == width){
+                    System.out.println("Hio");
+                }
+                
                 Color pix = normalImage.getPixel(x, y);
                 int red = pix.getRed();
                 int green = pix.getGreen();
                 int blue = pix.getBlue();
-                newImage.setPixel(x, y, new Color(red, 0, 0));
+                newImage.setPixel(x, y, normalImage.getPixel(x*2, y*2));
                 
+            }
+            if (y == 1){
+                    System.out.println("Hio");
             }
         }
         for(int y = 0; y < height; y++) {
@@ -68,6 +94,6 @@ public class ColoredCorners extends Filter
                 
             }
         }
-        image = newImage;
+        image = newImage;*/
     }
 }

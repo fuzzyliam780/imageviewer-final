@@ -1,9 +1,9 @@
 import java.awt.Color;
 /**
- * Write a description of class RedFilter here.
+ * Singles out the green channel.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Liam Marquis
+ * @version 4/29/19
  */
 public class GreenFilter extends Filter
 {

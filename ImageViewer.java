@@ -258,7 +258,7 @@ public class ImageViewer
         filterList.add(new RedFilter("Red"));
         filterList.add(new BlueFilter("Blue"));
         filterList.add(new GreenFilter("Green"));
-        filterList.add(new ColoredCorners("Warhol"));
+        filterList.add(new Warhol("Warhol"));
        
         return filterList;
     }
